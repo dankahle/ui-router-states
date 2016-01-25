@@ -12,8 +12,14 @@ var express = require('express'),
 
 var app = express();
 
-app.use(express.static('../public')); // for app
+/*
+   app.use(function(req, res, next) {
+   console.log(req.url);
+   next()
+})
+*/
 app.use(express.static('..')); // for node_modules and bower_components
+app.use(express.static('../public')); // for app
 
 app.use('/api/*', function(req, res) {// api
    res.send('api');
@@ -22,9 +28,14 @@ app.use('/api/*', function(req, res) {// api
 app.get('*', function(req, res) { // index.html for html5 routing
    var found = false;
    // express.static serves up index.html automatically for '/' so won't log that
-   var acceptablePaths = ['/', '/user', '/about'];
-   acceptablePaths.forEach(function(v) {
-      if(req.url.toLowerCase().indexOf(v) == 0)
+   var acceptableExactPaths = ['/', '/about'];
+   acceptableExactPaths.forEach(function(v) {
+      if(req.url.toLowerCase() === v.toLowerCase())
+         found = true;
+   })
+   var acceptableStartingPaths = ['/user'];
+   acceptableStartingPaths.forEach(function(v) {
+      if(req.url.toLowerCase().indexOf(v.toLowerCase()) === 0)
          found = true;
    })
 

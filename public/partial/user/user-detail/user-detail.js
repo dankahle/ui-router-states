@@ -3,6 +3,9 @@ angular.module('app')
       var vm = this;
 
       vm.user = user;
-      vm.keys = user.keys();
+      vm.keys = Object.keys(user)
+         .filter(function(key) {
+            return user.hasOwnProperty(key) && key.indexOf('$') !== 0;
+         });
 
 });
