@@ -1,4 +1,5 @@
 ### ui-router-states
+This is an example application to excercise the different abilities of ui-router and ui-router-extras.
 
 #### goals
 * have a common layout page everyone shares with named views that can be overridden
@@ -9,6 +10,9 @@ will have access to async data immediately, no more coding inside promise then f
 * feature branch "sticky-deep" will be added that will mimic sticky, but also allow for deep linking,
 i.e. layout.user.detail state will be open when you tab back to user, not just the user state
 
+
+### todo
+* back buttons using $state.go
 
 ### note
 * resolve inheritance from parent route doesn't work if child controller is included via ng-controller on its template,
