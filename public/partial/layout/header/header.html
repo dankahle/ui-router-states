@@ -1,0 +1,20 @@
+<div class="col-sm-12 header-view">
+   <div class="title">ui-router-states</div>
+
+   <div class="welcome">
+      Welcome: {{vm.currentUser.name}}<br>
+   </div>
+
+   <ul class="main-menu">
+      <li ng-class="{active: $state.is('layout')}">
+         <a ui-sref="layout">home</a>
+      </li>
+      <li ui-sref-active="active">
+         <a ui-sref="layout.user">users</a>
+      </li>
+      <li ui-sref-active="active">
+         <a ui-sref="layout.about"}>about</a>
+      </li>
+   </ul>
+
+</div>

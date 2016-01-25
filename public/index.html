@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+   <title></title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="utf-8">
+   <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+   <link type="text/css" rel="stylesheet/less" href="app.less">
+   <script>
+      less = {
+         logLevel: 1
+      }
+   </script>
+   <script src="bower_components/less.js/dist/less-1.6.1.min.js" data-concat="false"></script>
+</head>
+<body>
+
+<div id="content" class="container-fluid page">
+   <div class="row" style="height:100%">
+      <ui-view name="header" ></ui-view>
+      <ui-view name="leftnav" ></ui-view>
+      <ui-view></ui-view>
+   </div>
+</div>
+
+<!-- JS from Bower Components -->
+<script src="bower_components/jquery/jquery.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<!-- Add New Bower Component JS Above -->
+
+<!-- Main App JS -->
+<script src="app.js"></script>
+<script src="partial/layout/layout.js"></script>
+<script src="service/user-service.js"></script>
+<script src="partial/layout/header/header.js"></script>
+<script src="partial/layout/leftnav/leftnav.js"></script>
+<script src="partial/user/user.js"></script>
+<script src="partial/about/about.js"></script>
+<script src="partial/user/user-detail/user-detail.js"></script>
+<script src="partial/layout/splash/splash.js"></script>
+<!-- Add New Component JS Above -->
+
+</body>
+</html>

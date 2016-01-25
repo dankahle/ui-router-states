@@ -1,0 +1,32 @@
+@import (reference) "/bower_components/bootstrap/less/bootstrap";
+@import "dk-mixins";
+
+
+/* Component LESS */
+@import "partial/layout/layout.less";
+@import "partial/layout/header/header.less";
+@import "partial/layout/leftnav/leftnav.less";
+@import "partial/user/user.less";
+@import "partial/about/about.less";
+@import "partial/user/user-detail/user-detail.less";
+@import "partial/layout/splash/splash.less";
+/* Add Component LESS Above */
+
+@header-height: 60px;
+@height-minus-header: calc(100% ~"-" @header-height);
+
+.height-minus-header {
+   height: @height-minus-header;
+}
+
+html, body {
+   height: 100%;
+}
+body {
+}
+
+.page {
+   height: 100%;
+}
+
+

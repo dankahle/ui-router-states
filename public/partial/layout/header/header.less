@@ -1,0 +1,40 @@
+
+
+.header-view {
+   height: @header-height;
+   .outline;
+   .clearfix;
+
+   .title, .welcome {
+      padding: 15px;
+   }
+
+   .title {
+      float: left;
+      font-size: 20px;
+   }
+
+   .welcome {
+      float: right;
+      font-size: 16px;
+   }
+
+   .main-menu {
+      .list-unstyled;
+      .center-block;
+      z-index: 1;
+
+      li {
+         display: inline-block;
+         margin-right: 20px;
+
+         a {
+            padding: 8px 12px;
+         }
+          &.active {
+             background-color: plum;
+          }
+      }
+   }
+
+}
