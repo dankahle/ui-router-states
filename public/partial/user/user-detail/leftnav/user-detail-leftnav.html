@@ -1,0 +1,9 @@
+
+<div class="col-sm-2 leftnav-view" ng-hide="$state.includes('layout.about')">
+
+   <h5>{{vm.user.name}}'s Jira tasks</h5><br>
+   <div ng-repeat="task in vm.jiraTasks">
+      <a href="{{task.url}}">{{task.name}}</a>
+   </div>
+
+</div>
