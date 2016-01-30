@@ -18,7 +18,6 @@ var app = express();
    next()
 })
 */
-app.use(express.static('..')); // for node_modules and bower_components
 app.use(express.static('../public')); // for app
 
 app.use('/api/*', function(req, res) {// api

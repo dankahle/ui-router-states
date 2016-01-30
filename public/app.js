@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router', 'ngAnimate']);
+angular.module('app', ['ui.router', 'ct.ui.router.extras', 'ngAnimate']);
 
 angular.module('app')
    .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
