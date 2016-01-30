@@ -1,6 +1,13 @@
 <div class="col-sm-12 about-view">
    <button class="btn btn-link" ng-click="$state.go('layout.splash')">$state.go to home</button><br>
-   <button class="btn btn-link" ng-click="vm.history.go(-1)">back via history.go(-1)</button>
+   <button class="btn btn-link" ng-click="$state.go('layout.user', {}, {ignoreDsr:true})">goto user, ignore deepStateRedirect (turns off dsr for user until you visit user.detail again)</button><br>
+   <button class="btn btn-link" ng-click="vm.history.go(-1)">back via history.go(-1)</button><br>
+   <button class="btn btn-link" ng-click="$stickyState.reset('layout.user')">$stickyState.reset user (will rerun all user states next time)</button><br>
+   <button class="btn btn-link" ng-click="$deepStateRedirect.reset('layout.user')">deepStateRedirect reset on user (will reset dsr on user, reset is carl chosen)</button><br>
+   <button class="btn btn-link" ng-click="vm.addMary()">add mary to users, this should trigger user $watch code</button><br>
+   <button class="btn btn-link" ng-click="vm.updateMary()">change mary's name, watch doesn't catch this, only array.length change</button><br>
+   <button class="btn btn-link" ng-click="vm.newArray()">new users array (this doesn't work as you're watching the old object still)</button><br>
+
    <div class="display">
       About route wants the whole display under header, so can either set leftnav template to an empty string or simply hide it.
    </div>

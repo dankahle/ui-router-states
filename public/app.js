@@ -10,6 +10,9 @@ angular.module('app')
          resolve: {
             currentUser: function (userService) {
                return userService.getUser(1);
+            },
+            users: function(userService) {
+               return userService.getUsers();
             }
          },
          views: {
@@ -42,11 +45,13 @@ angular.module('app')
       $stateProvider.state('layout.user', {
          url: '/user',
          sticky: true,
-         deepStateRedirect: true,
-         resolve: {
-            users: function(userService) {
-               return userService.getUsers();
-            }
+         //deepStateRedirect: true, // this is all you need unless you want a default state (below)
+         deepStateRedirect: {
+            default: {
+               state: 'layout.user.detail',
+               params: {id: 2}// should show carl by default
+            },
+            //params: true// this messes up the deepState, starts as carl, then goto jim, then spash and user and runs carl again, what?
          },
          views: {
             'user@': {
@@ -92,7 +97,7 @@ angular.module('app')
 
    });
 
-angular.module('app').run(function ($rootScope, $state) {
+angular.module('app').run(function ($rootScope, $state, $deepStateRedirect, $stickyState) {
 
    $rootScope.safeApply = function (fn) {
       var phase = $rootScope.$$phase;
@@ -106,6 +111,8 @@ angular.module('app').run(function ($rootScope, $state) {
    };
 
    $rootScope.$state = $state;
+   $rootScope.$stickyState = $stickyState;
+   $rootScope.$deepStateRedirect = $deepStateRedirect;
 
    $rootScope.$on('$stateChangeError', function(event, toState, toParams) {
       console.log(event.name, toState, toParams)
