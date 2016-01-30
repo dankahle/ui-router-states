@@ -1,0 +1,33 @@
+<div class="splash-view col-sm-10">
+
+   <h3>Welcome to ui-router-states</h3>
+   <br>
+   <h5>This app demonstrates the various features of ui-router, namely:</h5>
+   <ul>
+      <li>abstract routes</li>
+      <li>multiple named routes</li>
+      <li>layout page with resolve inheritance (all async done before all views run)</li>
+      <li>router links</li>
+      <li>code-based route changes</li>
+      <li>sticky routes (routes that persist)</li>
+      <li>deep routes (deep linking to child routes)</li>
+   </ul>
+
+   <div class="views">
+      <h4>Views</h4>
+      <h5>layout:</h5>
+      layout is an abstract parent to all views with its resolve available to all below. It's controller doesn't
+      run nor it's template as the "views" is used to populate index.html's named views (header/leftnav)
+      <h5>layout.splash</h5>
+      url: "/", home view with splash in the main view (unnamed)
+      <h5>layout.about</h5>
+      url: "/about", about view which hides the leftnav and takes up 100% (col-xs-12)
+      <h5>layout.user</h5>
+      url: "/user", user view that lists the users
+      <h5>layout.user.detail</h5>
+      url: "/user/:id", user detail view that lists user's properties on right, and overwrites leftnav view with users
+      task list.
+      This was as easy as a leftnav@ view, that gets priority over the abstract layout leftnav view.
+   </div>
+
+</div>

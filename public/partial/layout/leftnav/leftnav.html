@@ -1,5 +1,8 @@
 <div class="col-sm-2 leftnav-view" ng-hide="$state.includes('layout.about')">
-   <h3>Leftnav</h3><br>
-   <div ng-repeat="item in vm.items">{{item}}</div>
+
+   <ui-view name="leftnav-main">
+      <h3>Leftnav</h3><br>
+      this is the default inside leftnav-main named view in leftnav. layout.user.detail will overwrite this view with jira tasks
+   </ui-view>
 
 </div>

@@ -1,5 +1,6 @@
 angular.module('app')
    .controller('UserDetailCtrl', function(user){
+      console.log('user-detail ctrl');
       var vm = this;
 
       vm.user = user;

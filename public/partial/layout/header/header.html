@@ -1,13 +1,13 @@
 <div class="col-sm-12 header-view">
-   <div class="title">ui-router-states</div>
+   <h3 class="title">header</h3>
 
    <div class="welcome">
       Welcome: {{vm.currentUser.name}}<br>
    </div>
 
    <ul class="main-menu">
-      <li ng-class="{active: $state.is('layout')}">
-         <a ui-sref="layout">home</a>
+      <li ng-class="{active: $state.is('layout.splash')}">
+         <a ui-sref="layout.splash">home</a>
       </li>
       <li ui-sref-active="active">
          <a ui-sref="layout.user">users</a>

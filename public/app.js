@@ -7,7 +7,7 @@ angular.module('app')
 
       $stateProvider.state('layout', {
          url: '/',
-         abstract: false,
+         abstract: true,
          resolve: {
             currentUser: function (userService) {
                return userService.getUser(1);
@@ -15,8 +15,6 @@ angular.module('app')
          },
          views: {
             '': {
-               //templateUrl: 'partial/layout/splash/splash.html',
-               //controller: 'SplashCtrl'
                template: '<ui-view></ui-view>'
             },
             header: {
@@ -31,6 +29,12 @@ angular.module('app')
             }
          }
       });
+      $stateProvider.state('layout.splash', {
+         url: '',
+         templateUrl: 'partial/splash/splash.html',
+         controller: 'SplashCtrl as vm',
+      });
+
       $stateProvider.state('layout.user', {
          url: 'user',
          templateUrl: 'partial/user/user.html',
@@ -44,11 +48,19 @@ angular.module('app')
 
       $stateProvider.state('layout.user.detail', {
          url: '/{id:int}',
-         templateUrl: 'partial/user/user-detail/user-detail.html',
-         controller: 'UserDetailCtrl as vm',
          resolve: {
             user: function (userService, $stateParams) {
                return userService.getUser($stateParams.id);
+            }
+         },
+         views: {
+            '@layout.user': {
+               templateUrl: 'partial/user/user-detail/user-detail.html',
+               controller: 'UserDetailCtrl as vm',
+            },
+            'leftnav@': {
+               templateUrl: 'partial/user/user-detail/leftnav/user-detail-leftnav.html',
+               controller: 'UserDetailLeftnavCtrl as vm'
             }
          }
       });
@@ -80,7 +92,18 @@ angular.module('app').run(function ($rootScope, $state) {
    $rootScope.$state = $state;
 
    $rootScope.$on('$stateChangeError', function(event, toState, toParams) {
-      console.log(event, toState, toParams)
+      console.log(event.name, toState, toParams)
    })
+   $rootScope.$on('$stateNotFound', function(event, toState, toParams) {
+      console.log(event.name, toState.name)
+   })
+/*
+   $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
+      console.log(event.name, toState.name)
+   })
+   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams) {
+      console.log(event.name, toState.name)
+   })
+*/
 
 });

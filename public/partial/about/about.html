@@ -1,4 +1,6 @@
 <div class="col-sm-12 about-view">
+   <button class="btn btn-link" ng-click="$state.go('layout.splash')">$state.go to home</button><br>
+   <button class="btn btn-link" ng-click="vm.history.go(-1)">back via history.go(-1)</button>
    <div class="display">
       About route wants the whole display under header, so can either set leftnav template to an empty string or simply hide it.
    </div>
