@@ -18,9 +18,12 @@
 
 <div id="content" class="container-fluid page">
    <div class="row" style="height:100%">
-      <ui-view name="header" ></ui-view>
-      <ui-view name="leftnav" ></ui-view>
-      <ui-view></ui-view>
+      <ui-view name="header"></ui-view>
+      <ui-view name="leftnav" ng-hide="$state.is('layout.user.detail')"></ui-view>
+      <ui-view name="user-detail-leftnav" ng-show="$state.includes('layout.user.detail')"></ui-view>
+      <ui-view name="splash" ng-show="$state.is('layout.splash')"></ui-view>
+      <ui-view name="user" ng-show="$state.includes('layout.user')"></ui-view>
+      <ui-view name="about" ng-show="$state.is('layout.about')"></ui-view>
    </div>
 </div>
 

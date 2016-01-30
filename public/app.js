@@ -30,23 +30,34 @@ angular.module('app')
       });
       $stateProvider.state('layout.splash', {
          url: '/',
-         templateUrl: 'partial/splash/splash.html',
-         controller: 'SplashCtrl as vm',
+         sticky: true,
+         views: {
+            'splash@': {
+               templateUrl: 'partial/splash/splash.html',
+               controller: 'SplashCtrl as vm',
+            }
+         }
       });
 
       $stateProvider.state('layout.user', {
          url: '/user',
-         templateUrl: 'partial/user/user.html',
-         controller: 'UserCtrl as vm',
+         sticky: true,
          resolve: {
             users: function(userService) {
                return userService.getUsers();
+            }
+         },
+         views: {
+            'user@': {
+               templateUrl: 'partial/user/user.html',
+               controller: 'UserCtrl as vm',
             }
          }
       });
 
       $stateProvider.state('layout.user.detail', {
          url: '/{id:int}',
+         sticky: true,
          resolve: {
             user: function (userService, $stateParams) {
                return userService.getUser($stateParams.id);
@@ -57,7 +68,7 @@ angular.module('app')
                templateUrl: 'partial/user/user-detail/user-detail.html',
                controller: 'UserDetailCtrl as vm',
             },
-            'leftnav@': {
+            'user-detail-leftnav@': {
                templateUrl: 'partial/user/user-detail/leftnav/user-detail-leftnav.html',
                controller: 'UserDetailLeftnavCtrl as vm'
             }
@@ -66,8 +77,13 @@ angular.module('app')
 
       $stateProvider.state('layout.about', {
          url: '/about',
-         templateUrl: 'partial/about/about.html',
-         controller: 'AboutCtrl as vm'
+         sticky: true,
+         views: {
+            'about@': {
+               templateUrl: 'partial/about/about.html',
+               controller: 'AboutCtrl as vm',
+            }
+         }
       })
       ;
       /* Add New States Above */
