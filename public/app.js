@@ -42,6 +42,7 @@ angular.module('app')
       $stateProvider.state('layout.user', {
          url: '/user',
          sticky: true,
+         deepStateRedirect: true,
          resolve: {
             users: function(userService) {
                return userService.getUsers();
