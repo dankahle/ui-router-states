@@ -6,7 +6,6 @@ angular.module('app')
       $locationProvider.html5Mode(true);
 
       $stateProvider.state('layout', {
-         url: '/',
          abstract: true,
          resolve: {
             currentUser: function (userService) {
@@ -30,13 +29,13 @@ angular.module('app')
          }
       });
       $stateProvider.state('layout.splash', {
-         url: '',
+         url: '/',
          templateUrl: 'partial/splash/splash.html',
          controller: 'SplashCtrl as vm',
       });
 
       $stateProvider.state('layout.user', {
-         url: 'user',
+         url: '/user',
          templateUrl: 'partial/user/user.html',
          controller: 'UserCtrl as vm',
          resolve: {
@@ -66,7 +65,7 @@ angular.module('app')
       });
 
       $stateProvider.state('layout.about', {
-         url: 'about',
+         url: '/about',
          templateUrl: 'partial/about/about.html',
          controller: 'AboutCtrl as vm'
       })
