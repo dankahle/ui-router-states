@@ -10,7 +10,7 @@ in their stead. A node server: server/server.js is supplied for this.
 5. localhost:3003 to pull up the site
 
 
-#### goals
+#### features
 * html5mode routing
 * have a common layout page everyone shares with named views that can be overridden
 * the layout parent state will have a resolve for resolving async data "for all children", i.e. every controller on the page
@@ -33,10 +33,14 @@ i.e. layout.user.detail state will be open when you tab back to user, not just t
 
 
 ### notes
-* resolve inheritance from parent route doesn't work if child controller is included via ng-controller on its template,
+
+**resolve inheritance requires controller be specified in route config**
+Resolve inheritance from parent route doesn't work if child controller is included via ng-controller on its template,
 you have to explicitly state a controller object on the route for it to work, otherwise you'll get an injector error
 stating it doesn't know what the resolved property provider is.
-* for /user and /about, could get away without having a <base> tag, but when on /user/detail/x, all a sudden all
+
+**needed to use a &lt;base&gt; tag**
+For /user and /about, could get away without having a &lt;base&gt; tag, but when on /user/detail/x, all a sudden all
 the bower files were trying to load from /user/bower_components/... never found an answer for this, but the base tag is
 pretty much required for html5Mode in angular, so added it, and all worked well after that
 
