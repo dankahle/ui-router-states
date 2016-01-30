@@ -35,7 +35,7 @@ All controllers log to console when run and in master branch all run every time 
 
 This is all fine, but what if the states share data that's mutable? 2 methods are introduced in user state, one $watch's the data while the other checks it on user state success. The former would look nicer on state changes, but could also run needlessly, the user never returning to the state. The latter sounds more reasonable: return to user state, then it reruns appropriate code shoudl the data have changed.
 
-
+If you turn on and off deepStateRedirect (app.js layout.user config), you'll notice visits to user tab don't preserve user.detail state, when on, they do. Also the default feature of deepStateRedirect is handy if you needed a default user.detail, albeit easy enough to do with $state.go.
 
 
 ### notes
