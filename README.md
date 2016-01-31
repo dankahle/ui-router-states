@@ -40,11 +40,11 @@ If you turn on and off deepStateRedirect (app.js layout.user config), you'll not
 
 ### notes
 
-**deepStateRedirect doesn't rerun the user.detail controller**
+**deepStateRedirect doesn't rerun the user.detail controller**  
 I was thinking it just remembered the child state and reran it, but the child state controller doesn't rerun, it keeps the child
 state's dom intact and so nothing reruns when you switch to user state again
 
-**$state.go's {ignoreDsr: true} command turns off dsr**
+**$state.go's {ignoreDsr: true} command turns off dsr**  
 About page has a link that does this. Once it goes there and turns it off... it stays off. The default doesn't work anymore, but
 dsr starts working again once you choose another layout.user.detail state
 
@@ -53,8 +53,11 @@ Resolve inheritance from parent route doesn't work if child controller is includ
 you have to explicitly state a controller object on the route for it to work, otherwise you'll get an injector error
 stating it doesn't know what the resolved property provider is.
 
-**needed to use a &lt;base&gt; tag**
+**needed to use a &lt;base&gt; tag**  
 For /user and /about, could get away without having a &lt;base&gt; tag, but when on /user/detail/x, all a sudden all
 the bower files were trying to load from /user/bower_components/... never found an answer for this, but the base tag is
 pretty much required for html5Mode in angular, so added it, and all worked well after that
+
+**ui-router-extras $stateParams bug**  
+Not in this app, but in my work project, sticky wasn't happening. Ran the $stickyProvider.debug command and watched the state changes. There was an error due to state being a child of state, which made no sense. When I googled it, came up with other folks having trouble getting sticky to work with just ui-sref('state') or $state.go('state'), the params didn't make it to $stickyState. The solution is to send the params along: ui-sref="state($stateParams)" or $state.go('state', $stateParams), then sticky works.
 
